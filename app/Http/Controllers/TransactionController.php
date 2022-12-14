@@ -12,9 +12,77 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
+        
+
+        
+    public function create(Request $request)
+    {
+        try {
+            $validator = $request->validate([
+                'send' => 'required'
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+
+        $transaction = Transaction::create([
+            'send' => $request->send
+            
+        ]);
+
+        return response()->json($transaction,201);
+
+
+
+    }
+
     public function index()
     {
-        //
+        return Transaction::get();
+    }
+
+    public function update($id, Request $request)
+    {
+        Transaction::where('id', $id)
+            ->update(['send' => $request->send]);
+
+        return 'transaccion realizada con exito';
+    }
+
+    public function show($id)
+    {
+        return Transaction::find($id);
+
+    }
+
+    public function destroy($id)
+    {
+        Transaction::where('id', $id)->delete();
+        return 'Transaccion eliminada con exito ';
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**
