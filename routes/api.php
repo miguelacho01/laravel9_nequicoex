@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+//Crear las rutas para nequiCoex
+
+Route::group(['prefix' => 'acounts'], function () {
+    Route::post('', [AcountController::class, 'create']);
+    Route::get('', [AcountController::class, 'index']);
+    Route::get('{id}', [AcountController::class, 'show']);
+    Route::put('{id}', [AcountController::class, 'update']);
+    Route::delete('{id}', [AcountController::class, 'delete']);    
 });
