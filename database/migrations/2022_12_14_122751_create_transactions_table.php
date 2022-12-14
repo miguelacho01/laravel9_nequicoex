@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->double('send')->nullable();
-            $table->foreignId('acount_id')->constrained('acounts');
+        
+            $table->foreignId('acount_id')->constrained('acount');
             $table->timestamps();
         });
     }

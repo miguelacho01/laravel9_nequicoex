@@ -34,11 +34,7 @@ class DepositController extends Controller
 
     public function index()
     {
-<<<<<<< HEAD
-        return
-=======
         return Deposit::get();
->>>>>>> b6fa8136e81b564a888a860148afc72cf14a9248
     }
 
     public function update($id, Request $request)
