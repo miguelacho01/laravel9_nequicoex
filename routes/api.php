@@ -27,3 +27,11 @@ Route::group(['prefix' => 'acounts'], function () {
     Route::put('{id}', [AcountController::class, 'update']);
     Route::delete('{id}', [AcountController::class, 'delete']);    
 });
+
+Route::group(['prefix' => 'transactions'], function () {
+    Route::post('', [TransactionController::class, 'create']);
+    Route::get('', [TransactionController::class, 'index']);
+    Route::get('{id}', [TransactionController::class, 'show']);
+    Route::put('{id}', [TransactionController::class, 'update']);
+    Route::delete('{id}', [TransactionController::class, 'delete']);    
+});
