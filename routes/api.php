@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //Crear las rutas para nequiCoex
+Route::group(['prefix'=>'user'],function(){
+    Route::post('',[UserController::class,'create']);
+    Route::get('',[UserController::class,'index']);
+    Route::get('{id}',[UserController::class,'show']);
+    Route::put('{id}',[UserController::class,'update']);
+    Route::delete('{id}',[UserController::class,'delete']);
+});
 
 Route::group(['prefix' => 'acounts'], function () {
     Route::post('', [AcountController::class, 'create']);
@@ -34,4 +41,11 @@ Route::group(['prefix' => 'transactions'], function () {
     Route::get('{id}', [TransactionController::class, 'show']);
     Route::put('{id}', [TransactionController::class, 'update']);
     Route::delete('{id}', [TransactionController::class, 'delete']);    
+});
+Route::group(['prefix'=>'deposits'],function(){
+    Route::post('',[DepositController::class,'create']);
+    Route::get('',[DepositController::class,'index']);
+    Route::get('{id}',[DepositController::class,'show']);
+    Route::put('{id}',[DepositController::class,'update']);
+    Route::delete('{id}',[DepositController::class,'delete']);
 });
