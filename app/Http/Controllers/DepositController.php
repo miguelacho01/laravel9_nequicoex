@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Deposit;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
 class DepositController extends Controller
 {
@@ -14,7 +15,7 @@ class DepositController extends Controller
      */
     public function index()
     {
-        //
+        return
     }
 
     /**
