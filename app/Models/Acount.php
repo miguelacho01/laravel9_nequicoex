@@ -26,5 +26,6 @@ public function transaction()
     public function deposits()
     {
         return $this->hasOne(Deposit::class);
+        
     }
 }
