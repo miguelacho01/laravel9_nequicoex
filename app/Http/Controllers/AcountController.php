@@ -55,7 +55,6 @@ class AcountController extends Controller
     public function destroy($id)
     {
         Acount::where('id', $id)->delete();
-        return 'cuenta eliminada con exito ';
+        return 'cuenta eliminada con exito';
     }
 }
-
