@@ -2,42 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\acount;
+use App\Models\Acount;
 use Illuminate\Http\Request;
 
 class AcountController extends Controller
 {
    
-   public  function create(Request $request)
-    {
-       
+    try {
+        $validator = $request->validate([
+            'NumberAcount' => 'required',
+            'balance' =>'required'
+         
+        ]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => $e->getMessage()
+        ], 400);
     }
+
+    $acount = Acount::create([
+        'NumberAcount' => $request->NumberAcount,
+        'balance' => $request->balance,
+        
+        
+    ]);
+
+    return response()->json($acount,201);
+
+
+
+
+
+
     public function index()
     {
-        
+        return Acount::get();
     }
 
-   
-    public function store(Request $request)
+    public function update($id, Request $request)
     {
-        //
+        Acount::where('id', $id)
+            ->update(['NumberAcount' => $request->NumberAcount
+        , 'balance' => $request->balance
+        ]);
+
+
+        return 'cuenta actualizada con exito';
     }
 
-
-    public function show(acount $acount)
+    public function show($id)
     {
-       
+        return Acount::find($id);
+
     }
 
-
-    public function update(Request $request, acount $acount)
+    public function destroy($id)
     {
-        //
+        Acount::where('id', $id)->delete();
+        return 'cuenta eliminada con exito ';
     }
 
-  
-    public function destroy(acount $acount)
-    {
-        //
-    }
 }
