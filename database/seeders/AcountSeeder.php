@@ -16,19 +16,7 @@ class AcountSeeder extends Seeder
     public function run()
     {
         //
-        Acount::factory()->create([
-            'NumberAcount' => 'e1234',
-              'balance' => 100.10,
-              
-          ]);
-          Acount::factory()->create([
-             'NumberAcount' => 'o1234',
-             'balance' => 200.5,
-           ]);
-           Acount::factory()->create([
-             'NumberAcount' => 'm1234',
-             'balance' => 50,
-           ]);
+        \App\Models\Acount::factory(10)->create();
 
 
 
