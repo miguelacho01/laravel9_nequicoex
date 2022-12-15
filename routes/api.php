@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\acount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcountController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+
 
 
 
@@ -33,14 +35,6 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('{id}',[UserController::class,'show']);
     Route::put('{id}',[UserController::class,'update']);
     Route::delete('{id}',[UserController::class,'delete']);
-});
-
-Route::group(['prefix' => 'acounts'], function () {
-    Route::post('', [AcountController::class, 'create']);
-    Route::get('', [AcountController::class, 'index']);
-    Route::get('{id}', [AcountController::class, 'show']);
-    Route::put('{id}', [AcountController::class, 'update']);
-    Route::delete('{id}', [AcountController::class, 'delete']);    
 });
 
 Route::group(['prefix' => 'transactions'], function () {

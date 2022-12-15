@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\acount;
+use App\Models\Acount;
 use Illuminate\Http\Request;
 
 class AcountController extends Controller
