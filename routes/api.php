@@ -65,3 +65,11 @@ Route::group(['prefix' => 'deposits'], function () {
     Route::put('{id}', [DepositController::class, 'update']);
     Route::delete('{id}', [DepositController::class, 'delete']);
 });
+Route::group(['prefix'=>'acount'],function(){
+    Route::post('',[AcountController::class,'create']);
+    Route::get('',[AcountController::class,'index']);
+    Route::get('{id}',[AcountController::class,'show']);
+    Route::put('{id}',[AcountController::class,'update']);
+    Route::delete('{id}',[AcountController::class,'delete']);
+});
+

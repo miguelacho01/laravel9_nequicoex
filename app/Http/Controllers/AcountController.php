@@ -31,10 +31,6 @@ class AcountController extends Controller
     // return response()->json($acount,201);
 
 
-
-
-
-
     public function index()
     {
         return Acount::get();
@@ -62,3 +58,4 @@ class AcountController extends Controller
         return 'cuenta eliminada con exito ';
     }
 }
+
