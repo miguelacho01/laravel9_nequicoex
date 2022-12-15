@@ -7,6 +7,7 @@ use App\Http\Controllers\AcountController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthControlller;
 
 
 
@@ -28,18 +29,8 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 
-Route::group([
+Route::post('login', [AuthControlller::class, 'login']);
 
-    'middleware' => 'api',
-    'prefix' => 'auth'
-
-], function ($router) {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-});
 
 //Crear las rutas para nequiCoex
 

@@ -7,28 +7,28 @@ use Illuminate\Http\Request;
 
 class AcountController extends Controller
 {
-   
-    try {
-        $validator = $request->validate([
-            'NumberAcount' => 'required',
-            'balance' =>'required'
-         
-        ]);
 
-    } catch (\Exception $e) {
-        return response()->json([
-            'message' => $e->getMessage()
-        ], 400);
-    }
+    // try {
+    //     $validator = $request->validate([
+    //         'NumberAcount' => 'required',
+    //         'balance' =>'required'
 
-    $acount = Acount::create([
-        'NumberAcount' => $request->NumberAcount,
-        'balance' => $request->balance,
-        
-        
-    ]);
+    //     ]);
 
-    return response()->json($acount,201);
+    // } catch (\Exception $e) {
+    //     return response()->json([
+    //         'message' => $e->getMessage()
+    //     ], 400);
+    // }
+
+    // $acount = Acount::create([
+    //     'NumberAcount' => $request->NumberAcount,
+    //     'balance' => $request->balance,
+
+
+    // ]);
+
+    // return response()->json($acount,201);
 
 
 
@@ -43,9 +43,9 @@ class AcountController extends Controller
     public function update($id, Request $request)
     {
         Acount::where('id', $id)
-            ->update(['NumberAcount' => $request->NumberAcount
-        , 'balance' => $request->balance
-        ]);
+            ->update([
+                'NumberAcount' => $request->NumberAcount, 'balance' => $request->balance
+            ]);
 
 
         return 'cuenta actualizada con exito';
@@ -54,7 +54,6 @@ class AcountController extends Controller
     public function show($id)
     {
         return Acount::find($id);
-
     }
 
     public function destroy($id)
@@ -62,5 +61,4 @@ class AcountController extends Controller
         Acount::where('id', $id)->delete();
         return 'cuenta eliminada con exito ';
     }
-
 }

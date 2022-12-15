@@ -8,6 +8,7 @@ class AuthControlller extends Controller
 {
     public function login(Request $request)
     {
+        return 123;
         $credentials = $request->only(['email', 'password']);
 
 
