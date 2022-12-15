@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 
