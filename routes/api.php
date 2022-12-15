@@ -26,13 +26,28 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+});
+
 //Crear las rutas para nequiCoex
-Route::group(['prefix'=>'user'],function(){
-    Route::post('',[UserController::class,'create']);
-    Route::get('',[UserController::class,'index']);
-    Route::get('{id}',[UserController::class,'show']);
-    Route::put('{id}',[UserController::class,'update']);
-    Route::delete('{id}',[UserController::class,'delete']);
+
+
+Route::group(['prefix' => 'user'], function () {
+    Route::post('', [UserController::class, 'create']);
+    Route::get('', [UserController::class, 'index']);
+    Route::get('{id}', [UserController::class, 'show']);
+    Route::put('{id}', [UserController::class, 'update']);
+    Route::delete('{id}', [UserController::class, 'delete']);
 });
 
 Route::group(['prefix' => 'acounts'], function () {
@@ -40,7 +55,7 @@ Route::group(['prefix' => 'acounts'], function () {
     Route::get('', [AcountController::class, 'index']);
     Route::get('{id}', [AcountController::class, 'show']);
     Route::put('{id}', [AcountController::class, 'update']);
-    Route::delete('{id}', [AcountController::class, 'delete']);    
+    Route::delete('{id}', [AcountController::class, 'delete']);
 });
 
 Route::group(['prefix' => 'transactions'], function () {
@@ -48,12 +63,12 @@ Route::group(['prefix' => 'transactions'], function () {
     Route::get('', [TransactionController::class, 'index']);
     Route::get('{id}', [TransactionController::class, 'show']);
     Route::put('{id}', [TransactionController::class, 'update']);
-    Route::delete('{id}', [TransactionController::class, 'delete']);    
+    Route::delete('{id}', [TransactionController::class, 'delete']);
 });
-Route::group(['prefix'=>'deposits'],function(){
-    Route::post('',[DepositController::class,'create']);
-    Route::get('',[DepositController::class,'index']);
-    Route::get('{id}',[DepositController::class,'show']);
-    Route::put('{id}',[DepositController::class,'update']);
-    Route::delete('{id}',[DepositController::class,'delete']);
+Route::group(['prefix' => 'deposits'], function () {
+    Route::post('', [DepositController::class, 'create']);
+    Route::get('', [DepositController::class, 'index']);
+    Route::get('{id}', [DepositController::class, 'show']);
+    Route::put('{id}', [DepositController::class, 'update']);
+    Route::delete('{id}', [DepositController::class, 'delete']);
 });

@@ -46,6 +46,16 @@ class User extends Authenticatable
     {
         return $this->hasOne(Acount::class);
     }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
     
 
 }
