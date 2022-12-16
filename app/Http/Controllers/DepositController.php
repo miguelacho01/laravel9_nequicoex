@@ -13,7 +13,8 @@ class DepositController extends Controller
     {
         try {
             $validator = $request->validate([
-                'deposits' => 'required'
+                'deposits' => 'required',
+                'acount_id' =>'required'
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -22,8 +23,15 @@ class DepositController extends Controller
         }
         $deposits = Deposit::create([
             'deposits' => $request->deposits,
-            'user_id' => $request->user_id
+            'acount_id' => $request->acount_id
+            
         ]);
+        $usuario=$request->acount_id;
+        //return 'Su deposito fue realizado con exito';
+
+        // return
+        //  where:: ;
+
 
         // $user = User::create([
         //     'deposits' => $request->deposits

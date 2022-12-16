@@ -17,25 +17,40 @@ class DatabaseSeeder extends Seeder
   {
 
 
-    User::factory()->create([
-      'name' => 'esteban',
-      'email' => 'esteban@example.com',
-      'password' => bcrypt('123456'),
-    ]);
-    User::factory()->create([
-      'name' => 'omar',
-      'email' => 'omar@example.com',
-      'password' => bcrypt('123456'),
-    ]);
-    User::factory()->create([
-      'name' => 'miguel',
-      'email' => 'miguel@example.com',
-      'password' => bcrypt('123456'),
-    ]);
+    // User::factory()->create([
+    //   'name' => 'esteban',
+    //   'email' => 'esteban@example.com',
+    //   'password' => bcrypt('123456'),
+    // ]);
+    // User::factory()->create([
+    //   'name' => 'omar',
+    //   'email' => 'omar@example.com',
+    //   'password' => bcrypt('123456'),
+    // ]);
+    // User::factory()->create([
+    //   'name' => 'miguel',
+    //   'email' => 'miguel@example.com',
+    //   'password' => bcrypt('123456'),
+    // ]);
 
-    $this->call([
-      AcountSeeder::class
+    
+    // $this->call([
+    //   AcountSeeder::class
       
-    ]);
+    // ]);
+
+
+
+    \App\Models\Acount::factory(10)->create();
+
+
+
+
+
+
+
+
+
+
   }
 }

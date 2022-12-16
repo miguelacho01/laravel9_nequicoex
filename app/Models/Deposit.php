@@ -10,7 +10,8 @@ class Deposit extends Model
     use HasFactory;
 
     protected $fillable=[
-        'deposits'
+        'deposits',
+        'acount_id'
     ];
 
     public function acount()

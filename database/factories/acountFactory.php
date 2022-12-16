@@ -18,9 +18,9 @@ class acountFactory extends Factory
     {
         return [
             //
-            'NumberAcount' => $this->faker->phoneNumber(),
-            'balance' => $this->faker->numberBetween(20,300),
-            'user_id' => User::all()->random()->id
+            'NumberAcount' => fake()->randomNumber(9),
+            'balance' => fake()->numberBetween(20000,30000000),
+            'user_id' => User::factory()->create()->id
         ];
     }
 }
