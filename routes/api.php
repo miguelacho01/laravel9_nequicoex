@@ -48,7 +48,7 @@ Route::group(['prefix' => 'user'], function () {
 Route::group(['prefix' => 'acounts'], function () {
     Route::post('', [AcountController::class, 'create']);
     Route::get('', [AcountController::class, 'index']);
-    Route::get('{id}', [AcountController::class, 'show']);
+    Route::get('mostrar{id}', [AcountController::class, 'show']);
     Route::put('{id}', [AcountController::class, 'update']);
     Route::delete('{id}', [AcountController::class, 'delete']);
 });

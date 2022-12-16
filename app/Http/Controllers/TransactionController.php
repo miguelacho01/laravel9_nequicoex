@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Acount;
 use App\Models\Transaction;
+
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -36,7 +37,25 @@ class TransactionController extends Controller
             
         ]);
 
-        return response()->json($transaction,201);
+        $saldo=Acount::find($request->acountEnviar_id)->balance;
+        $envia=Transaction::find($request->send);
+        if($envia>$saldo){
+        $account=Acount::find($request->acountEnviar_id);
+        $account->balance = $account->balance - $request->send;
+        $account->save();
+
+        $account=Acount::find($request->acountRecibir_id);
+        $account->balance = $account->balance + $request->send;
+        $account->save();
+
+        return 'Transaccion realizada con exito';
+        }else{
+            return 'no hay suficiente saldo';
+        }
+       
+        
+       
+       
 
 
 
@@ -52,6 +71,7 @@ class TransactionController extends Controller
         Transaction::where('id', $id)
             ->update(['send' => $request->send]);
 
+        
         return 'transaccion realizada con exito';
     }
 

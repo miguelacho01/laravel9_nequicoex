@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposit;
-use App\Models\User;
+use App\Models\Acount;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 
@@ -26,10 +26,19 @@ class DepositController extends Controller
             'acount_id' => $request->acount_id
             
         ]);
-        $usuario=$request->acount_id;
-        //return 'Su deposito fue realizado con exito';
+        $account=Acount::find($request->acount_id);
+        
+        $account->balance = $account->balance + $request->deposits;
 
-        // return
+        $account->save();
+        // $valor=$balance+$request->deposits;
+            //return 'Su deposito fue realizado con exito';
+        // $balance=Acount::find($request->acount_id)->balance;
+        // $update=$valor=$request->deposits;
+
+
+        return 'Deposito realizado con exito';
+         
         //  where:: ;
 
 
