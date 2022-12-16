@@ -15,34 +15,38 @@ class DepositController extends Controller
             $validator = $request->validate([
                 'deposits' => 'required'
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage()
             ], 400);
         }
-
-        $user = User::create([
-            'deposits' => $request->deposits
-            
+        $deposits = Deposit::create([
+            'deposits' => $request->deposits,
+            'user_id' => $request->user_id
         ]);
 
-        return response()->json($deposits,201);
+        // $user = User::create([
+        //     'deposits' => $request->deposits
+
+        // ]);
+
+        // return response()->json($deposits,201);
+
+
 
 
 
     }
 
     public function index()
-    {
-        return Deposit::get();
+    {       
+        return Deposit::get();       
     }
-
     public function update($id, Request $request)
     {
         Deposit::where('id', $id)
             ->update(['deposits' => $request->deposits]);
-          
+
 
 
         return 'Deposito actualizado con exito';
@@ -51,7 +55,6 @@ class DepositController extends Controller
     public function show($id)
     {
         return Deposit::find($id);
-
     }
 
     public function destroy($id)

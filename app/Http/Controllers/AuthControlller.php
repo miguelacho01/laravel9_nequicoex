@@ -8,8 +8,8 @@ class AuthControlller extends Controller
 {
     public function login(Request $request)
     {
-        return 123;
-        $credentials = $request->only(['email', 'password']);
+        return $credentials = $request->only(['email', 'password']);
+        
 
 
         if (!$token = auth()->attempt($credentials)) {

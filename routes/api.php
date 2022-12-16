@@ -29,12 +29,14 @@ use App\Http\Controllers\AuthControlller;
 //     return $request->user();
 // });
 
+//Crear las rutas para nequiCoex
 Route::post('login', [AuthControlller::class, 'login']);
 
 
-//Crear las rutas para nequiCoex
 
+//Toda las siguientes rutas estan protegidas
 
+    // prefix equivale a prefijo para cada metodo
 Route::group(['prefix' => 'user'], function () {
     Route::post('', [UserController::class, 'create']);
     Route::get('', [UserController::class, 'index']);
@@ -64,12 +66,5 @@ Route::group(['prefix' => 'deposits'], function () {
     Route::get('{id}', [DepositController::class, 'show']);
     Route::put('{id}', [DepositController::class, 'update']);
     Route::delete('{id}', [DepositController::class, 'delete']);
-});
-Route::group(['prefix'=>'acount'],function(){
-    Route::post('',[AcountController::class,'create']);
-    Route::get('',[AcountController::class,'index']);
-    Route::get('{id}',[AcountController::class,'show']);
-    Route::put('{id}',[AcountController::class,'update']);
-    Route::delete('{id}',[AcountController::class,'delete']);
 });
 
