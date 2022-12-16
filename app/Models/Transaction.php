@@ -10,7 +10,9 @@ class transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'send'
+        'send',
+        'acountEnviar_id',
+        'acountRecibir_id',
     ];
 
     public function acount()

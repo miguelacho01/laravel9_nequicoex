@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\transaction;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -30,7 +30,9 @@ class TransactionController extends Controller
         }
 
         $transaction = Transaction::create([
-            'send' => $request->send
+            'send' => $request->send,
+            'acountEnviar_id' =>$request->acountEnviar_id,
+            'acountRecibir_id' =>$request->acountRecibir_id
             
         ]);
 

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->double('send')->nullable();
         
-            $table->foreignId('acount_id')->constrained('acounts');
+            $table->foreignId('acountEnviar_id')->constrained('acounts');
+            $table->foreignId('acountRecibir_id')->constrained('acounts');
             $table->timestamps();
         });
     }
